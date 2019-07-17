@@ -67,19 +67,4 @@ class (PrimBase m, s ~ PrimState m) => MonadPrimBase s m | m -> s where
 
 instance (s ~ RealWorld) => MonadPrimBase s IO where
 instance MonadPrimBase s (ST s) where
-instance (PrimBase m, s ~ PrimState m) => MonadPrimBase s (ContT r m) where
 instance (PrimBase m, s ~ PrimState m) => MonadPrimBase s (IdentityT m) where
-instance (PrimBase m, s ~ PrimState m) => MonadPrimBase s (MaybeT m) where
-instance (PrimBase m, s ~ PrimState m) => MonadPrimBase s (ExceptT e m) where
-instance (PrimBase m, s ~ PrimState m) => MonadPrimBase s (ReaderT r m) where
-instance (PrimBase m, s ~ PrimState m) => MonadPrimBase s (Lazy.StateT state m) where
-instance (PrimBase m, s ~ PrimState m) => MonadPrimBase s (Strict.StateT state m) where
-instance (Monoid w, PrimBase m, s ~ PrimState m) => MonadPrimBase s (Lazy.WriterT w m) where
-instance (Monoid w, PrimBase m, s ~ PrimState m) => MonadPrimBase s (Strict.WriterT w m) where
-instance (Monoid w, PrimBase m, s ~ PrimState m) => MonadPrimBase s (Lazy.RWST r w state m) where
-instance (Monoid w, PrimBase m, s ~ PrimState m) => MonadPrimBase s (Strict.RWST r w state m) where
-
-#if MIN_VERSION_transformers(0,5,6)
-instance (Monoid w, PrimBase m, s ~ PrimState m) => MonadPrimBase s (CPS.WriterT w m) where
-instance (Monoid w, PrimBase m, s ~ PrimState m) => MonadPrimBase s (CPS.RWST r w state m) where
-#endif
